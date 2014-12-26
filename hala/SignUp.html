@@ -3,35 +3,41 @@
   <title>SignUp</title>
   <script>
  function validateForm() {
+    // validate name
     var x = document.forms["myForm"]["Name"].value;
     if (x==null || x=="") {
         alert("Name must be filled out");
         return false;
     }
 
+    // validate Billing address
     var y = document.forms["myForm"]["Billing address"].value;
     if (y==null || y=="") {
         alert("Billing address must be filled out");
         return false;
     }
 
+    // validate phone
 	var z = document.forms["myForm"]["Phone"].value;
     if (z==null || z=="") {
         alert("Phone must be filled out");
         return false;
 	}
 
-    var phoneno = /^\d{10}$/;  
+    //sure that phone=11 number
+    var phoneno = /^\d{11}$/;  
   	if(!z.match(phoneno))  { 
 	     alert("Not a valid Phone Number");  
 	     return false;  
 	}
 
+    // validate Email
     var a = document.forms["myForm"]["Email"].value;
     if (a==null || a=="") {
         alert("Email must be filled out");
         return false;
     }
+    // validate Email format
     var atpos = a.indexOf("@");
     var dotpos = a.lastIndexOf(".");
       if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=a.length) {
@@ -39,12 +45,14 @@
         return false;
   	 }
 
+     // validate password
   	var s = document.forms["myForm"]["Password"].value;
     if (s==null || s=="") {
         alert("Password must be filled out");
         return false;
     }
 
+    // sure that password= confirm password
     var d = document.forms["myForm"]["ConfirmPassword"].value;
     if (d==null || d=="") {
         alert("ConfirmPassword must be filled out");
