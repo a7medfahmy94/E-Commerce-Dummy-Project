@@ -1,5 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <style>
+body {
+  background: url(hala.png) no-repeat;
+  background-size: 100%;
+}
+</style>
   <title>SignUp</title>
   <script>
  function validateForm() {
@@ -25,7 +32,7 @@
 	}
 
     //sure that phone=11 number
-    var phoneno = /^\d{11}$/;  
+    var phoneno = /^\d{10}$/;  
   	if(!z.match(phoneno))  { 
 	     alert("Not a valid Phone Number");  
 	     return false;  
@@ -69,30 +76,32 @@
 </script>
 </head>
 
-<body background="bgimage.jpg">
+<body >
 <form name="myForm" action="demo_form.asp" onsubmit="return validateForm()" method="post" >
-	Name:<br>
-	<input type="text" name="Name">
+	<left>
+    Name:<br>
+	<input type="text" name="Name" size="30">
 	<br>
 	Billing address:<br>
-	<input type="text" name="Billing address">
+	<input type="text" name="Billing address" size="30">
 	<br>
 	Shipping address:<br>
-	<input type="text" name="Shipping address"> (optional)
+	<input type="text" name="Shipping address" size="30"> 
 	<br>
 	Phone:<br>
-	<input type="text" name="Phone"> 
+	<input type="text" name="Phone" size="30"> 
 	<br>
 	Email:<br>
-	<input type="text" name="Email"> 
+	<input type="text" name="Email" size="30"> 
 	<br>
 	Password:<br>
-	<input type="password" name="Password"> 
+	<input type="password" name="Password" size="30"> 
 	<br>
 	ConfirmPassword:<br>
-	<input type="password" name="ConfirmPassword"> 
+	<input type="password" name="ConfirmPassword" size="30"> 
 	<br>
-	<input type="submit" value="SignUp">
+	<input type="submit" value="SignUp" >
+</left>
 </form>
 </body>
 
