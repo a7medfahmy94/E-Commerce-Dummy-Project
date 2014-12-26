@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
-// define variables 
-if (@$_POST["submit"] <> "") {
-
-	$servername = "localhost";
-    $username = "root";
-    $password = " ";
-    $dbname = "e-commerce";
+// define variables
+if (isset($_POST["submit"])) {
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "E-Commerce";
 
     $name = $_POST["Name"];
-    $address = $_POST["Billing address"];
+    $address = $_POST["BillingAddress"];
     $Phone = $_POST["Phone"];
     $Email = $_POST["Email"];
     $password = $_POST["Password"];
-    $Shipping = $post["Shipping address"]:
+    $Shipping = $_POST["ShippingAddress"];
 
-  
     // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
+    }else{
+        echo("Yay!");
     }
 
-    $sql = "INSERT INTO customer (fname, billing_address,shipping_address,phone,email, password)
-    VALUES ('$name', '$address','$Shipping','$Phone' ,'$Email','$password')";
+    $sql = "insert into Customer (fname, billing_address,shipping_address,phone,email, password)".
+    "VALUES ('$name', '$address','$Shipping','$Phone' ,'$Email','$password')";
 
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";
@@ -37,7 +33,4 @@ if (@$_POST["submit"] <> "") {
 
     mysqli_close($conn);
 }
-     
 ?>
-</body>
-</html>
