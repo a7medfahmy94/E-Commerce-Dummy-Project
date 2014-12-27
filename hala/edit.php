@@ -10,21 +10,22 @@ if (isset($_POST["submit"])) {
     $name = $_POST["Name"];
     $address = $_POST["BillingAddress"];
     $Phone = $_POST["Phone"];
-    $Email = $_POST["Email"];
     $password = $_POST["Password"];
-    $Shipping = $_POST["ShippingAddress"];
+
     // Create connection
     $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }else{
-        echo("Yay!");
+        echo("");
     }
-    $sql = "insert into customer (fname, billing_address,shipping_address,phone,email, password)".
-    "VALUES ('$name', '$address','$Shipping','$Phone' ,'$Email','$password')";
+    $sql = " UPDATE customer
+    SET fname='$name', biling_address='$address', phone='$Phone' , password='$password'
+    WHERE id=1 ";
+    
     if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
+        echo "New record updated successfully";
     } else {
         echo "Error: " ;
     }

@@ -17,28 +17,25 @@ body {
         alert("Name must be filled out");
         return false;
     }
-
+    
     // validate Billing address
-    var y = document.forms["myForm"]["Billing address"].value;
+    var y = document.forms["myForm"]["BillingAddress"].value;
     if (y==null || y=="") {
         alert("Billing address must be filled out");
         return false;
     }
-
     // validate phone
-	var z = document.forms["myForm"]["Phone"].value;
+    var z = document.forms["myForm"]["Phone"].value;
     if (z==null || z=="") {
         alert("Phone must be filled out");
         return false;
-	}
-
+    }
     //sure that phone=11 number
-    var phoneno = /^\d{10}$/;  
-  	if(!z.match(phoneno))  { 
-	     alert("Not a valid Phone Number");  
-	     return false;  
-	}
-
+    var phoneno = /^\d{10}$/;
+    if(!z.match(phoneno))  {
+         alert("Not a valid Phone Number");
+         return false;
+    }
     // validate Email
     var a = document.forms["myForm"]["Email"].value;
     if (a==null || a=="") {
@@ -51,15 +48,13 @@ body {
       if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=a.length) {
         alert("Not a valid e-mail address");
         return false;
-  	 }
-
+     }
      // validate password
-  	var s = document.forms["myForm"]["Password"].value;
+    var s = document.forms["myForm"]["Password"].value;
     if (s==null || s=="") {
         alert("Password must be filled out");
         return false;
     }
-
     // sure that password= confirm password
     var d = document.forms["myForm"]["ConfirmPassword"].value;
     if (d==null || d=="") {
@@ -67,43 +62,40 @@ body {
         return false;
     }
     if (d!=s){
-    	alert("Password Do not match");
-    	return false;
-    }   
+        alert("Password Do not match");
+        return false;
+    }
     return true;
-
 }
-
-
 </script>
 </head>
 
 <body >
 <form name="myForm" action = "Sign_Up.php" onsubmit="return validateForm()" method="post" >
-	<left>
+   
     Name:<br>
-	<input type="text" name="Name" size="30">
-	<br>
-	Billing address:<br>
-	<input type="text" name="Billing address" size="30">
-	<br>
-	Shipping address:<br>
-	<input type="text" name="Shipping address" size="30"> 
-	<br>
-	Phone:<br>
-	<input type="text" name="Phone" size="30"> 
-	<br>
-	Email:<br>
-	<input type="text" name="Email" size="30"> 
-	<br>
-	Password:<br>
-	<input type="password" name="Password" size="30"> 
-	<br>
-	ConfirmPassword:<br>
-	<input type="password" name="ConfirmPassword" size="30"> 
-	<br>
-	<input type="submit" value="SignUp" >
-</left>
+    <input type="text" name="Name" size="30">
+    <br>
+    Billing address:<br>
+    <input type="text" name="BillingAddress" size="30">
+    <br>
+    Shipping address:<br>
+    <input type="text" name="ShippingAddress" size="30">
+    <br>
+    Phone:<br>
+    <input type="text" name="Phone" size="30">
+    <br>
+    Email:<br>
+    <input type="text" name="Email" size="30">
+    <br>
+    Password:<br>
+    <input type="password" name="Password" size="30">
+    <br>
+    ConfirmPassword:<br>
+    <input type="password" name="ConfirmPassword" size="30">
+    <br>
+    <input type="submit" value="SignUp" name="submit">
+
 </form>
 </body>
 
