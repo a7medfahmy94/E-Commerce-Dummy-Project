@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 $trans = intval($_POST['trans']);
-$sql = "SELECT * FROM `order` WHERE `Processing Transaction ID` = '$trans'";
+$sql = "SELECT * FROM `order_processing` WHERE `transaction_id` = '$trans'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -21,18 +21,18 @@ if ($result->num_rows > 0) {
 		 <ul><div id="products"> <img src="<?php echo $row["Picture"];?>
            " />
           <h3><?php
-			   echo "Transaction ID: " . $row["Processing Transaction ID"].
-		   "<br />Customer ID: " . $row["Customer ID"].
-		   "<br />Product ID Number: " . $row["Product ID Number"]."<br />Date / Time: " . 
-		   $row["Date / Time"]."<br />Quantity: " . $row["Quantity"]
-		   ."<br />Processed: " . $row["Processed"]
-		   ."<br />Shipped: " . $row["Shipped"];
+			   echo "Transaction ID: " . $row["transaction_id"].
+		   "<br />Customer ID: " . $row["customer_id"].
+		   "<br />product ID: " . $row["product_id"]."<br />Date / Time: " . 
+		   $row["Date / Time"]."<br />Quantity: " . $row["quantity"]
+		   ."<br />processed: " . $row["processed"]
+		   ."<br />shipped: " . $row["shipped"];
 		   ?> </h3>
          <?php
-		    $ship = $row["Shipped"];
+		    $ship = $row["shipped"];
 		 	if($ship == $shipped){
-			?><h3> <?php	echo "Date Shipped: " .$row["Date Shipped"]
-				."<br> Shipping company: " .$row["Shipping company"]?></h3>
+			?><h3> <?php	echo "Date shipped: " .$row["date_shipped"]
+				."<br> Shipping Company: " .$row["shipping_company"]?></h3>
                 </div></ul>
                 <?php
 			}
