@@ -4,8 +4,10 @@
     $dbpassword = "hala";
     $dbname = "e-commerce";
 
-    $name = $_POST["Name"];
+    $fname = $_POST["FName"];
+    $lname = $_POST["LName"];
     $address = $_POST["BillingAddress"];
+    $address2 = $_POST["ShippingAddress"];
     $Phone = $_POST["Phone"];
     $password = $_POST["Password"];
   
@@ -16,7 +18,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "UPDATE customer set fname='$name' ,phone='$Phone' ,billing_address='$address',
+    $sql = "UPDATE customer set fname='$fname' ,lname='$lname',phone='$Phone' ,billing_address='$address',shipping_address='$address2',
     password='$password' WHERE id=1 ";
 
     if (mysqli_query($conn, $sql)) {

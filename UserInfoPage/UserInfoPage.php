@@ -12,7 +12,7 @@ $servername = "localhost:3306";
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $sql = "SELECT fname, billing_address, phone, password FROM customer where id=1";
+    $sql = "SELECT fname, billing_address,  shipping_address,phone, password FROM customer where id=1";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -20,6 +20,7 @@ $servername = "localhost:3306";
         while($row = $result->fetch_assoc()) {
          $Name=$row["fname"];
          $Address=$row["billing_address"];
+         $Address2=$row["shipping_address"];
          $Phone=$row["phone"];
          $Password=$row["password"];
             
@@ -33,6 +34,8 @@ $servername = "localhost:3306";
     $conn->close();
 
 ?>
+<center>
+    <body style="background-color:LightGray ">
  <form name="myForm" action = "edit.php" onsubmit="return validateForm()" method="post">
 	<br>
  	FirstName: <input type="text" name="FName" value="<?php echo $Name ?>">
@@ -41,7 +44,10 @@ $servername = "localhost:3306";
     LastName: <input type="text" name="LName" value="<?php echo $Name ?>">
     <br>
     <br>
-    Address: <input type="text" name="BillingAddress" value="<?php echo $Address ?>"> 
+    BillingAddress: <input type="text" name="BillingAddress" value="<?php echo $Address ?>"> 
+    <br>
+    <br>
+    ShippingAddress: <input type="text" name="ShippingAddress" value="<?php echo $Address2 ?>"> 
     <br>
     <br>
     Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>"> 
@@ -51,7 +57,7 @@ $servername = "localhost:3306";
     <br>
     <input type="submit" value="Edit" name="submit" >
     </form>
-
+</center>
 </body>
 <script>
  function validateForm() {
