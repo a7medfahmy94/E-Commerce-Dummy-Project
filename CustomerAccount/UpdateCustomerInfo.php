@@ -29,10 +29,7 @@
         echo "ok";
     }
 
-    // $sql = "UPDATE customer set fname='FName' ,lname='$LName', billing_address ='$BAddress',
-    // billing_cite='$BCity',billing_state='$BState',billing_zip='$BZip', shipping_address='$SAddress',
-    // shipping_city='$SCity',shipping_state='$SState',shipping_zip='$SZip',phone='$Phone' ,
-    // password='$Password' WHERE id=1";
+  
     $sql = "UPDATE customer set fname='$FName' ,lname='$LName',billing_address='$BAddress',
     billing_city='$BCity',billing_state='$BState',billing_zip='$BZip',
     shipping_address='$SAddress',shipping_city='$SCity',shipping_state='$SState',shipping_zip='$SZip'
@@ -46,4 +43,7 @@
     }
 
     mysqli_close($conn);
+
 ?>
+    <body style="background-color:LightGray ">
+</body>

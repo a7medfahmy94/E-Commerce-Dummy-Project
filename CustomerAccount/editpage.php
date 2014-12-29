@@ -1,9 +1,9 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body>
 <title>UserPageInfo</title>
-<body >
-<dl> -->
+ <body style="background-color:LightGray ">
+<dl>
 
 	<?php
  	$servername = "localhost:3306";
@@ -50,6 +50,8 @@
 	
 	$conn->close();
 ?>
+   
+
 <form name="myForm" action = "UpdateCustomerInfo.php" onsubmit="return validateForm()" method="post">
 	<br>
 	ID: <input type="text" name="ID" value="<?php echo $id_ ?>">
@@ -75,8 +77,6 @@
 	ShippingZip: <input type="text" name="ShippingZip" value="<?php echo $SZip?>">
 	<br>
 	Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>"> 
-	<br>
-	Email: <input type="text" name="Email" value="<?php echo $Email ?>"> 
 	<br>
 	Password: <input type="text" name="Password" value="<?php echo $Password ?>"> 
 	<br>
@@ -127,11 +127,11 @@
         return false;
     }
 
-    var r = document.forms["myForm"]["Email"].value;
-    if (r!='$Email') {
-        alert("can't change email");
-        return false;
-    }
+    // var r = document.forms["myForm"]["Email"].value;
+    // if (r!='$Email') {
+    //     alert("can't change email");
+    //     return false;
+    // }
     
     return true;
 }

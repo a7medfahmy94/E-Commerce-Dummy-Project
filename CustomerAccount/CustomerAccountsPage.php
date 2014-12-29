@@ -33,3 +33,5 @@ echo "</table>";
 
 mysqli_close($con);
 ?>
+    <body style="background-color:LightGray ">
+</body>
