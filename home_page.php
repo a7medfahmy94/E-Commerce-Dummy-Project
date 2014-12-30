@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 $servername = "localhost";
 $username = "LeilaSaeed";
 $password = "leila";
@@ -23,13 +23,13 @@ if( isset($_POST["LogIn"]) ){
   		die('Could not connect: ' . mysql_error());
 		}	
 		$sql = "SELECT email , password FROM customer";
-		$result = mysqli_query($conn , $sql);
+$id = "SELECT id FROM customer where email = '" . $_POST["email"] . "' and password = '". $_POST["pass"] . "'";		$result = mysqli_query($conn , $sql);
 		if(! $result ){
 		  die('Could not get data: ' . mysql_error());
 		}
 		header("location: list_application.php");	
 	}
-
+	$_SESSION['id'] = $id;
 }
 ?>
 
