@@ -8,6 +8,7 @@
 	<body>
 		<h1>Hello</h1>
 		<a href="cart.php">Cart</a>
+		<a href="checkout.php">checkout</a>
 	</body>
 
 </html>
