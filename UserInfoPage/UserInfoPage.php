@@ -1,18 +1,18 @@
 <?php
-
-$servername = "localhost:3306";
+session_start();
+    $servername = "localhost:3306";
     $dbusername = "hala";
     $dbpassword = "hala";
     $dbname = "e-commerce";
 
-
+   $id = $_SESSION["current_user"];
     
     $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $sql = "SELECT fname, billing_address,  shipping_address,phone, password FROM customer where id=1";
+    $sql = "SELECT fname, billing_address,  shipping_address,phone, password FROM customer where id=$id";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -29,14 +29,14 @@ $servername = "localhost:3306";
       
         
     } else {
-        echo "0 results";
+        eheader( 'Location: home_page.php');;
     }
     $conn->close();
 
 ?>
 <center>
     <body style="background-color:LightGray ">
- <form name="myForm" action = "edit.php" onsubmit="return validateForm()" method="post">
+ <form name="UserInfoForm" action = "edit.php" onsubmit="return validateForm()" method="post">
 	<br>
  	FirstName: <input type="text" name="FName" value="<?php echo $Name ?>">
     <br>
@@ -53,7 +53,7 @@ $servername = "localhost:3306";
     Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>"> 
     <br>
     <br>
-    Password: <input type="text" name="Password" value="<?php echo $Password ?>"> 
+    Password: <input type="password" name="Password" value="<?php echo $Password ?>"> 
     <br>
     <input type="submit" value="Edit" name="submit" >
     </form>
@@ -62,27 +62,27 @@ $servername = "localhost:3306";
 <script>
  function validateForm() {
     // validate name
-    var x = document.forms["myForm"]["Name"].value;
+    var x = document.forms["UserInfoForm"]["FName"].value;
     if (x==null || x=="") {
         alert("Name must be filled out");
         return false;
     }
     
     // validate Billing address
-    var y = document.forms["myForm"]["BillingAddress"].value;
+    var y = document.forms["UserInfoForm"]["BillingAddress"].value;
     if (y==null || y=="") {
         alert("Billing address must be filled out");
         return false;
     }
     
     // validate phone
-    var z = document.forms["myForm"]["Phone"].value;
+    var z = document.forms["UserInfoForm"]["Phone"].value;
     if (z==null || z=="") {
         alert("Phone must be filled out");
         return false;
     }
     //sure that phone=11 number
-    var phoneno = /^\d{10}$/;
+    var phoneno = /^\d{11}$/;
     if(!z.match(phoneno))  {
          alert("Not a valid Phone Number");
          return false;
@@ -90,7 +90,7 @@ $servername = "localhost:3306";
     
     
      // validate password
-    var s = document.forms["myForm"]["Password"].value;
+    var s = document.forms["UserInfoForm"]["Password"].value;
     if (s==null || s=="") {
         alert("Password must be filled out");
         return false;

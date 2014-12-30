@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+    $id = $_SESSION["current_user"];
     $servername = "localhost:3306";
     $dbusername = "hala";
     $dbpassword = "hala";
@@ -19,12 +22,13 @@
     }
 
     $sql = "UPDATE customer set fname='$fname' ,lname='$lname',phone='$Phone' ,billing_address='$address',shipping_address='$address2',
-    password='$password' WHERE id=1 ";
+    password='$password' WHERE id=$id";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
+    if (mysqli_query($conn, $sql)) { 
+         header( 'Location: home_page.php');
+        
     } else {
-        echo "Error: " ;
+        header( 'Location: UserInfoPage.php');
     }
 
     mysqli_close($conn);
