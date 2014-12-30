@@ -26,13 +26,14 @@ if (isset($_POST["submit"])) {
     "VALUES ('$name', '$address','$Shipping','$Phone' ,'$Email','$password')";
     
       if (mysqli_query($conn, $sql)) {
+        mysqli_close($conn);
         header( 'Location: home_page.php');
           exit;
     } else {
         echo "Error: " ;
     }
 
-    mysqli_close($conn);
+    
 
 }
 
