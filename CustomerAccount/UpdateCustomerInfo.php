@@ -37,12 +37,16 @@
     password='$Password' WHERE id=$id_ ";
 
     if (mysqli_query($conn, $sql)) {
+        mysqli_close($conn);
         header( 'Location: home_page.php');
+        exit();
     } else {
+        mysqli_close($conn);
         header( 'Location: editpage.php');
+        exit();
     }
 
-    mysqli_close($conn);
+    
 
 ?>
     <body style="background-color:LightGray ">

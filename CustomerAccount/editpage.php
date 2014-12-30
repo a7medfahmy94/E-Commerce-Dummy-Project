@@ -45,7 +45,10 @@
 	  
 	    
 	} else {
-	    echo "0 results";
+
+		$conn->close();
+	     header( 'Location: CustomerAccountsPage.php');
+	     exit();
 	}
 	
 	$conn->close();
