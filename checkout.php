@@ -41,7 +41,12 @@
 					<tbody>
 					<?php
 					if($result->num_rows > 0){
+		//creating the array which will contain all the IDs of all the orders for later use
+						echo "<script>var ids = [];</script>";
 						while($row = $result->fetch_object()){
+		//add the transaction add to the array
+							echo "<script>ids.push(".$row->transaction_id.");</script>";
+		//the table
 							echo '<tr id="'.$row->transaction_id.'_row">
 										<td class="cart_product">
 											<a href=""><img src="data:image/jpeg;base64,'.base64_encode($row->picture).'"/></a>
@@ -60,9 +65,6 @@
 										</td>
 										<td class="cart_total">
 											<p id="'.$row->transaction_id.'" class="cart_total_price">$'.($row->quantity * $row->price).'</p>
-										</td>
-										<td class="cart_delete">
-											<a class="btn" id="'.$row->transaction_id.'_delete" href=""><span>X</span></i></a>
 										</td>
 									</tr>';
 						}
@@ -83,7 +85,7 @@
 
 	<div>
 	<?php if($result->num_rows > 0)
-	echo '<a class="btn btn-lg" href="checkOut.php">Order!</a>';
+	echo '<a id="order" class="btn btn-lg" href="index.php">Order!</a>';
 	?>
 	</div>
 
@@ -91,61 +93,18 @@
 
 	<script src="js/bootstrap.js"></script>
 	<script src="js/jquery.js"></script>
-      <script>
-		    $(function(){
-		    	function updateTotal(id){
-		    		var q  = parseInt($("#"+id+"_quantity").val());
-		    		var p  = parseInt($("#"+id+"_price").text());
-		    		$("#"+id).html('$' + (q*p));
-		    		$.ajax({
-		    			url: "updateOrders.php",
-		    			type: "POST",
-		    			data: {
-		    				transaction_id: id,
-		    				quantity: q
-		    			}
-		    		});
-		    	}
-		    	function destroyOrder(id){
-		    		$.ajax({
-							url: "destroyOrder.php",
-		    			type: "POST",
-		    			data: {
-		    				transaction_id: id
-		    			}
-		    		});
-		    	}
-		    	//a plus,minus
-		    	//input quantity
-		    	//p total
-		    	$("a[id*='plus']").bind('click',function(){
-		    		var v = parseInt($(this).next().val());
-		    		var max = parseInt($(this).next().attr('data-max'));
-		    		if(v+1 <= max){
-			    		$(this).next().val(v+1);
-			    		var id = $(this).attr('id').split('_')[0];
-			    		updateTotal(id);
-			    	}
-		    		return false;
-		    	});
-		    	$("a[id*='minus']").bind('click',function(){
-		    		var v = parseInt($(this).prev().val());
-		    		if(v > 0){
-			    		$(this).prev().val(v-1);
-			    		var id = $(this).attr('id').split('_')[0];
-			    		updateTotal(id);
-		    		}
-
-		    		return false;
-		    	});
-		    	$("a[id*='_delete']").bind('click',function(){
-		    		var id = $(this).attr('id').split('_')[0];
-		    		destroyOrder(id);
-		    		$("#"+id+"_row").remove();
-		    		return false;
-		    	});
-		    });
-
+  <script>
+	  function order(array){
+	  	$.ajax({
+	  		type: "post",
+	  		url: "finishOrders.php",
+	  		data: {ids: JSON.stringify(array)}
+	  	});
+	  }
+  	$("#order").bind('click',function(){
+  		order(ids);
+  		alert("Thanks for purchasing!!\nWe will deliver the product ASAP");
+  	});
   </script>
 </body>
 </html>
