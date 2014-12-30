@@ -29,7 +29,9 @@ session_start();
       
         
     } else {
-        header( 'Location: home_page.php');;
+         $conn->close();
+        header( 'Location: home_page.php');
+        exit();
     }
     $conn->close();
 
