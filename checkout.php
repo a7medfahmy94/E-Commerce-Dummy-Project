@@ -55,9 +55,7 @@
 										</td>
 										<td class="cart_quantity">
 											<div class="cart_quantity_button">
-												<a id="'.$row->transaction_id.'_plus" class="btn" href=""> + </a>
-												<input id="'.$row->transaction_id.'_quantity" class="cart_quantity_input" type="text" name="quantity" data-max="'.$row->p_quantity.'" value="'.$row->quantity.'" autocomplete="off" size="2">
-												<a id="'.$row->transaction_id.'_minus" class="btn" href=""> - </a>
+												<input id="'.$row->transaction_id.'_quantity" class="cart_quantity_input" type="text" name="quantity" data-max="'.$row->p_quantity.'" value="'.$row->quantity.'" autocomplete="off" size="2" disabled>
 											</div>
 										</td>
 										<td class="cart_total">
@@ -85,7 +83,7 @@
 
 	<div>
 	<?php if($result->num_rows > 0)
-	echo '<a class="btn btn-lg" href="checkOut.php">Purchase</a>';
+	echo '<a class="btn btn-lg" href="checkOut.php">Order!</a>';
 	?>
 	</div>
 
