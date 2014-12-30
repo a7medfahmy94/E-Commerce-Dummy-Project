@@ -29,7 +29,7 @@ session_start();
       
         
     } else {
-        eheader( 'Location: home_page.php');;
+        header( 'Location: home_page.php');;
     }
     $conn->close();
 

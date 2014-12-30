@@ -25,11 +25,15 @@ session_start();
     password='$password' WHERE id=$id";
 
     if (mysqli_query($conn, $sql)) { 
+         mysqli_close($conn);
          header( 'Location: home_page.php');
+         exit();
         
     } else {
+         mysqli_close($conn);
         header( 'Location: UserInfoPage.php');
+        exit();
     }
 
-    mysqli_close($conn);
+   
 ?>
