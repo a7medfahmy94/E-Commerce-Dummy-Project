@@ -37,9 +37,9 @@
     password='$Password' WHERE id=$id_ ";
 
     if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
+        header( 'Location: home_page.php');
     } else {
-        echo "Error: " ;
+        header( 'Location: editpage.php');
     }
 
     mysqli_close($conn);

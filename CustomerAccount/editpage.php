@@ -78,7 +78,7 @@
 	<br>
 	Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>"> 
 	<br>
-	Password: <input type="text" name="Password" value="<?php echo $Password ?>"> 
+	Password: <input type="password" name="Password" value="<?php echo $Password ?>"> 
 	<br>
 	<input type="submit" value="Edit" name="submit" >
 	</form>
@@ -113,12 +113,12 @@
         return false;
     }
     //sure that phone=11 number
-    var phoneno = /^\d{10}$/;
+    var phoneno = /^\d{11}$/;
     if(!z.match(phoneno))  {
          alert("Not a valid Phone Number");
          return false;
     }
-    
+     
     
      // validate password
     var s = document.forms["myForm"]["Password"].value;
@@ -126,12 +126,11 @@
         alert("Password must be filled out");
         return false;
     }
-
-    // var r = document.forms["myForm"]["Email"].value;
-    // if (r!='$Email') {
-    //     alert("can't change email");
-    //     return false;
-    // }
+    if (s.length <'6') {
+        alert("weak password ! ");
+        return false;
+    }
+   
     
     return true;
 }
