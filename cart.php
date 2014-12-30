@@ -86,7 +86,7 @@
 
 	<div>
 	<?php if($result->num_rows > 0)
-	echo '<a class="btn btn-lg" href="checkOut.php">Check out</a>';
+	echo '<a class="btn btn-lg" href="checkout.php">Check out</a>';
 	?>
 	</div>
 
