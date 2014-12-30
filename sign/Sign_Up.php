@@ -30,6 +30,7 @@ if (isset($_POST["submit"])) {
         header( 'Location: home_page.php');
           exit;
     } else {
+        mysqli_close($conn);
         echo "Error: " ;
     }
 
