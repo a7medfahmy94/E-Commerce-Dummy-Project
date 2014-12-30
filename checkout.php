@@ -13,7 +13,7 @@
 	    header("location: http://localhost/index.php");
 	}
 	$_SESSION['current_user'] = 2;
-	$sql = "SELECT product.p_quantity,transaction_id,product.name,product.price,order_processing.quantity,product_id,date_time,picture FROM order_processing,product WHERE order_processing.customer_id = ".$_SESSION['current_user']." and product.id=order_processing.product_id";
+	$sql = "SELECT product.p_quantity,transaction_id,product.name,product.price,order_processing.quantity,product_id,date_time,picture FROM order_processing,product WHERE order_processing.customer_id = ".$_SESSION['current_user']." and product.id=order_processing.product_id and order_processing.processed=false";
 	$result = $conn->query($sql);
 ?>
 
