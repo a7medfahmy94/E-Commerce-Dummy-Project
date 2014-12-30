@@ -24,7 +24,7 @@ if( isset($_POST["LogIn"]) ){
 		}	
 		$sql = "SELECT email , password FROM customer";
 		$result = mysqli_query($conn , $sql);
-		if(! $query ){
+		if(! $result ){
 		  die('Could not get data: ' . mysql_error());
 		}
 		header("location: list_application.php");	
@@ -46,7 +46,7 @@ if( isset($_POST["LogIn"]) ){
  			<input name = "email" type = "text">
  			<br>
  			password <br>
- 			<input name = "pass" type = "text">
+ 			<input name = "pass" type = "password">
  			<br>
  			<br>
  			<input type = "submit" name = "LogIn" value = "LogIn" >  
