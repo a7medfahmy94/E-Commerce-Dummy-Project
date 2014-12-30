@@ -95,6 +95,10 @@ session_start();
         alert("Password must be filled out");
         return false;
     }
+     if (s.length <'6') {
+        alert("weak password ! ");
+        return false;
+    }
     
     return true;
 }
