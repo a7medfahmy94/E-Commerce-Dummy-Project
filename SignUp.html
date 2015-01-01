@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <style>
+.center {
+    text-align: center;
+    color: black;
+    width: 15em;  height: 2em;
+}
+</style>
+  <title>SignUp</title>
+
+  <script>
+ function validateForm() {
+    // validate name , name don't be null or empty
+    var name = document.forms["LogInForm"]["Name"].value;
+    if (name==null || name=="") {
+        alert("Name must be filled out");
+        return false;
+    }
+    
+    // validate Billing address,don't be null or empty
+    var billindAddress = document.forms["LogInForm"]["BillingAddress"].value;
+    if (billindAddress==null || billindAddress=="") {
+        alert("Billing address must be filled out");
+        return false;
+    }
+    
+    //validate shippingAddress ,don't be null or empty
+    var shippingAddress = document.forms["LogInForm"]["ShippingAddress"].value;
+    if (shippingAddress==null || shippingAddress=="") {
+        alert("shipping address must be filled out");
+        return false;
+    }
+    // validate phone ,don't be null or empty
+    var phone = document.forms["LogInForm"]["Phone"].value;
+    if (phone==null || phone=="") {
+        alert("Phone must be filled out");
+        return false;
+    }
+    //sure that phone=11 number
+    var phoneno = /^\d{11}$/;
+    if(!phone.match(phoneno))  {
+         alert("Not a valid Phone Number");
+         return false;
+    }
+    // validate Email,don't be null or empty
+    var email = document.forms["LogInForm"]["Email"].value;
+    if (email==null || email=="") {
+        alert("Email must be filled out");
+        return false;
+    }
+    // validate Email format
+    var atpos = email.indexOf("@");
+    var dotpos = email.lastIndexOf(".");
+      if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+        alert("Not a valid e-mail address");
+        return false;
+     }
+     // validate password,don't be null or empty
+    var pass = document.forms["LogInForm"]["Password"].value;
+    
+    if (pass==null || pass=="") {
+        alert("Password must be filled out");
+        return false;
+    }
+    if (pass.length <'6') {
+        alert("weak password ! ");
+        return false;
+    }
+    // sure that password= confirm password
+    var confirmPass = document.forms["LogInForm"]["ConfirmPassword"].value;
+    if (confirmPass==null || confirmPass=="") {
+        alert("ConfirmPassword must be filled out");
+        return false;
+    }
+    if (pass!=confirmPass){
+        alert("Password Do not match");
+        return false;
+    }
+    return true;
+}
+</script>
+</head>
+<center>
+<body style="background-color:LightGray ">
+    
+    
+  
+     <h2>New User Signup!</h2>
+
+        <form name="LogInForm" action = "Sign_Up.php" onsubmit="return validateForm()" method="post">
+            <input type="text" name ="Name" placeholder="Name" class="center"/>
+            <br>
+            <br>
+            <input type="text" name="BillingAddress" placeholder="Billing Address" class="center"/>
+            <br>
+            <br>
+            <input type="text" name="ShippingAddress" placeholder="Shipping Address" class="center"/>
+            <br>
+            <br>
+            <input type="text" name="Phone" placeholder="Phone" class="center"/>
+            <br>
+            <br>
+            <input type="email" name="Email" placeholder="Email Address" class="center"/>
+            <br>
+            <br>
+            <input type="password" name="Password" placeholder="Password" class="center"/>
+            <br>
+            <br>
+             <input type="password" name="ConfirmPassword" placeholder="ConfirmPassword" class="center"/>
+            <br>
+            <br>
+            <button type="submit"  name ="submit" class="center">Signup</button>
+        </form>
+    
+    
+</center>    
+</form>
+</body>
+
+</html>
