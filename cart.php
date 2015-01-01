@@ -12,7 +12,6 @@
 	if ($conn->connect_error) {//if error , redirect to index
 	    header("location: http://localhost/index.php");
 	}
-	$_SESSION['current_user'] = 2;
 	$sql = "SELECT product.p_quantity,transaction_id,product.name,product.price,order_processing.quantity,product_id,date_time,picture FROM order_processing,product WHERE order_processing.customer_id = ".$_SESSION['current_user']." and product.id=order_processing.product_id and order_processing.processed=false";
 	$result = $conn->query($sql);
 ?>
@@ -25,7 +24,7 @@
 
 <body>
 	<h1>HARL | E-Commerce</h1>
-	<button onclick="window.location.href='index.php'">Home</button>
+	<button onclick="window.location.href='home_page.php'">Home</button>
 	<h2>Shopping Cart</h2>
 
 				<table class="table table-condensed table-bordered table-striped">

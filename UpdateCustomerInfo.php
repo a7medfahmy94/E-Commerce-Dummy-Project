@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost:3306";
-    $dbusername = "hala";
-    $dbpassword = "hala";
-    $dbname = "e-commerce";
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "fahmy1234";
+    $dbname = "E-Commerce";
 
     $id_=$_POST["ID"];
     $FName=$_POST["FName"];
@@ -29,8 +29,8 @@
         echo "ok";
     }
 
-  
-    $sql = "UPDATE customer set fname='$FName' ,lname='$LName',billing_address='$BAddress',
+
+    $sql = "UPDATE Customer set fname='$FName' ,lname='$LName',billing_address='$BAddress',
     billing_city='$BCity',billing_state='$BState',billing_zip='$BZip',
     shipping_address='$SAddress',shipping_city='$SCity',shipping_state='$SState',shipping_zip='$SZip'
     ,phone='$Phone' ,
@@ -38,7 +38,7 @@
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
-        header( 'Location: home_page.php');
+        header( 'Location: homePageAdmin.php');
         exit();
     } else {
         mysqli_close($conn);
@@ -46,7 +46,7 @@
         exit();
     }
 
-    
+
 
 ?>
     <body style="background-color:LightGray ">

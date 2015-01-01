@@ -1,10 +1,10 @@
 <?php
 //define variables
 if (isset($_POST["submit"])) {
-    $servername = "localhost:3306";
-    $dbusername = "hala";
-    $dbpassword = "hala";
-    $dbname = "e-commerce";
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "fahmy1234";
+    $dbname = "E-Commerce";
 
 
     $name = $_POST["Name"];
@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
     $Email = $_POST["Email"];
     $password = $_POST["Password"];
     $Shipping = $_POST["ShippingAddress"];
-    
+
 
     // Check connection
     $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
@@ -22,9 +22,9 @@ if (isset($_POST["submit"])) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "insert into customer (fname, billing_address,shipping_address,phone,email, password)".
+    $sql = "insert into Customer (fname, billing_address,shipping_address,phone,email, password)".
     "VALUES ('$name', '$address','$Shipping','$Phone' ,'$Email','$password')";
-    
+
       if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
         header( 'Location: home_page.php');
@@ -34,7 +34,7 @@ if (isset($_POST["submit"])) {
         echo "Error: " ;
     }
 
-    
+
 
 }
 

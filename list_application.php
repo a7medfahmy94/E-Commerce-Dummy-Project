@@ -1,72 +1,25 @@
 <?php
-session_start(); 
-
-if( isset($_POST["start shopping"]) ){
-	header("location: productList.php");
-}
-else if( isset($_POST["track orders"]) ){
-	header("location: pageOfCustomer.php");
-	
-} 
-else if (isset($_POST["Your account"])){
-	header("location: UserInfoPage.php");
-}
-else if( isset($_POST["change your information"]) ){
-	header("location: CustomerAccountsPage.php");	
-}
-else if( isset($_POST["cart"]) ){
-	header("location: cart.php");	
-}
-else if( isset($_POST["checkout"]) ){
-	header("location: checkout.php");	
-}
-
-
+session_start();
 ?>
 <html>
 	<header>
 		<title> List </title>
-		<b> List </b> 
+		<link rel="stylesheet" href="css/bootstrap.css">
  	</header>
 
- 	<body>
- 		#product list
- 		<form action = "list_application.php" method = "post">
- 			<br>
- 			<input type = "submit" name = "start shopping" value = "start shopping" >
- 			<br>  
- 		</form>
- 			OR 
- 		#track order 
- 		<form action = "list_application.php" method = "post">
- 			<br>
- 			<input type = "submit" name = "track orders" value = "track orders"> 
- 			<br> 
- 		</form>
- 			OR
- 		# customer account
- 		<form action = "list_application.php" method = "post"> 		 
- 			<br>
- 			<input type = "submit" name = "Your account" value = "Your account"> 
- 		</form>
- 			OR
- 		#update user page
- 		<form action = "list_application.php" method = "post"> 		 
- 			<br>
- 			<input type = "submit" name = "change your information" value = "change your information"> 
- 		</form>
- 			OR
- 		# cart page
- 		<form action = "list_application.php" method = "post"> 		 
- 			<br>
- 			<input type = "submit" name = "cart" value = "cart"> 
- 		</form>
- 			OR
- 		#checkout page
- 		<form action = "list_application.php" method = "post"> 		 
- 			<br>
- 			<input type = "submit" name = "checkout" value = "checkout"> 
- 		</form>
+ 	<body style="margin-left:15px">
+ 	<h1> Home Page </h1>
+   <button onclick="logOut();">Log out</button><br><br><br>
+		<a class="btn" href="products_list_page.html">Product List</a><br><br><br>
+ 		<a class="btn" href="orderTrack.php">Order tracking</a><br><br><br>
+ 		<a class="btn" href="UserInfoPage.php">Info</a><br><br><br>
+ 		<a class="btn" href="cart.php">Shopping Cart</a><br><br><br>
+ 		<a class="btn" href="checkout.php">Check Out</a><br><br><br>
+	<script>
+		function logOut(){
+			window.location.href = "logOut.php";
+		}
+		</script>
  	</body>
 
 </html>

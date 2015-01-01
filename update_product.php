@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 $servername = "localhost";
-$username = "LeilaSaeed";
-$password = "leila";
+$username = "root";
+$password = "fahmy1234";
 $dbname = "E-Commerce";
 
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -16,13 +16,13 @@ if (isset($_POST["OK"])){
 
 	#take inpute of store page
 	$name = $_SESSION['nameOfProduct'];
-	
+
 	#check if set id
 	if (!empty($_POST["id"])){
 
 		$id = $_POST["id"];
-		
-		#update id 
+
+		#update id
 		$sql = "UPDATE product SET id = $id WHERE name = $name";
 
 		#check if update record
@@ -68,7 +68,7 @@ if (isset($_POST["OK"])){
 	if (!empty($_POST["p_quantity"])){
 		$p_quantity = $_POST["p_quantity"];
 
-		#update Quantity 
+		#update Quantity
 		$sql = "UPDATE product SET p_quantity = $p_quantity WHERE name = $name";
 
 		if ($conn->query($sql) === TRUE) {
@@ -146,12 +146,12 @@ if (isset($_POST["OK"])){
 <html>
 	<header>
 		<title> update product </title>
-		<b> update product </b> 
+		<b> update product </b>
  	</header>
 
  	<body>
 
- 		<form action = "product.php" method = "post">
+ 		<form action = "update_product.php" method = "post">
  			id <br>
  			<input name = "id" type = "text">
  			<br>
@@ -177,7 +177,7 @@ if (isset($_POST["OK"])){
  			<input name = "visible" type = "text">
  			<br>
  			<br>
- 			<input type = "submit" name = "OK" value = "Update"> 
+ 			<input type = "submit" name = "OK" value = "Update">
 
  	 	</form>
 

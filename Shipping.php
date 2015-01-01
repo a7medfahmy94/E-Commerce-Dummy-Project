@@ -1,8 +1,8 @@
 <?php
 session_start();
 $servername = "localhost";
-$username = "LeilaSaeed";
-$password = "leila";
+$username = "root";
+$password = "fahmy1234";
 $dbname = "E-Commerce";
 
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -15,7 +15,7 @@ if( $conn->connect_error ){
 }
 $sql = "SELECT transaction_id , customer_id , product_id , quantity FROM order_processing WHERE shipped = 0 AND processed = 1 ";
 
-#check if get this coloum 
+#check if get this coloum
 $result = $conn->query($sql);
 
 if( $result->num_rows <= 0 ){
@@ -27,6 +27,9 @@ if( $result->num_rows <= 0 ){
 <?php #show data of order_process table ?>
 <html>
 <body>
+<head>
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
   <h2>Order</h2>
         <table class="table table-condensed table-bordered table-striped">
           <thead>
@@ -61,13 +64,17 @@ if( $result->num_rows <= 0 ){
 if (isset($_POST["OK"])){
 
 	#check if set name
-	if (empty($_POST["name"])){
-		echo "Enter name of product";
+	if (!isset($_POST["id"])){
+		echo "Enter id of transaction";
 	}
 	else{
-		$name = $_POST["name"];
-		$sql = "UPDATE order_processing SET shipped = 1 WHERE name = $name";
-
+		$id = $_POST["id"];
+		$num = $_POST["num"] ;
+		$com = $_POST["company"];
+		$sql = "UPDATE order_processing SET shipped = 1 ".
+		" , tracking_number = $num , shipping_company = '$com' ".
+		" WHERE transaction_id = $id";
+		echo "$sql";
 		#check if row already updating
 		if ($conn->query($sql) === TRUE) {
   	  echo "success updating";
@@ -76,19 +83,7 @@ if (isset($_POST["OK"])){
     	echo "Error updating record: " . $conn->error;
 		}
 	}
-	$num = $_POST["num"] ;
-	$com = $_POST["company"];
 
-	$sql = "INSERT INTO order_processing (tracking_number,shipping_company)
-	VALUES ($num , $com)";
-
-	#check if already insert 
-	if ($conn->query($sql) === TRUE) {
-    echo "successfully";
-	}
-	else {
-    echo "Error" . $sql . "<br>" . $conn->error;
-	}
 
 }
 
@@ -97,23 +92,28 @@ if (isset($_POST["OK"])){
 <html>
 	<header>
 		<title> Shipping </title>
-		<b> Shipping Page </b> 
+		<b> Shipping Page </b>
  	</header>
+	<style>
+	.lginput{
+		width: 190px;
 
+	}
+	</style>
  	<body>
 
- 		<form action = "home_page.php" method = "post">
- 			Enter name of product <br>
- 			<input name = "name" type = "text">
- 			<br>
+ 		<form class="form-group" action = "Shipping.php" method = "post">
+ 			Enter id of transaction <br>
+ 			<input style="height: 40px;" class="lginput form-control" name = "id" type = "number">
+ 			<br><br>
  			Enter number <br>
- 			<input name = "num" type = "text">
- 			<br>
+ 			<input style="height: 40px;"class="lginput form-control" name = "num" type = "text">
+ 			<br><br>
  			Enter name of company <br>
- 			<input name = "company" type = "text"> 			
+ 			<input style="height: 40px;"class="lginput form-control" name = "company" type = "text">
  			<br>
  			<br>
- 			<input type = "submit" name = "OK" value = "OK" >  
+ 			<input style="height: 40px;"class="form-control" type = "submit" name = "OK" value = "OK" >
  		</form>
 
  	</body>

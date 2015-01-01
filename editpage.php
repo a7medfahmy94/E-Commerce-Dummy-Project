@@ -6,10 +6,10 @@
 <dl>
 
 	<?php
- 	$servername = "localhost:3306";
-    $dbusername = "hala";
-    $dbpassword = "hala";
-    $dbname = "e-commerce";
+ 	$servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "fahmy1234";
+    $dbname = "E-Commerce";
 
     $id_=$_POST["id"];
 
@@ -20,11 +20,11 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT * FROM customer where id=$id_";
+	$sql = "SELECT * FROM Customer where id=$id_";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-		
+
 	    while($row = $result->fetch_assoc()) {
 	    	$FName=$row["fname"];
 	    	$LName=$row["lname"];
@@ -39,21 +39,21 @@
 	    	$Phone=$row["phone"];
 	    	$Email=$row["email"];
 	    	$Password=$row["password"];
-	    	
+
 	    }
-	   
-	  
-	    
+
+
+
 	} else {
 
 		$conn->close();
 	     header( 'Location: CustomerAccountsPage.php');
 	     exit();
 	}
-	
+
 	$conn->close();
 ?>
-   
+
 
 <form name="myForm" action = "UpdateCustomerInfo.php" onsubmit="return validateForm()" method="post">
 	<br>
@@ -63,7 +63,7 @@
 	<br>
 	LastName: <input type="text" name="LName" value="<?php echo $LName ?>">
 	<br>
-	BillingAddress: <input type="text" name="BillingAddress" value="<?php echo $BAddress ?>"> 
+	BillingAddress: <input type="text" name="BillingAddress" value="<?php echo $BAddress ?>">
 	<br>
 	BillingCity: <input type="text" name="BillingCity" value="<?php echo $BCity ?>">
 	<br>
@@ -79,9 +79,9 @@
 	<br>
 	ShippingZip: <input type="text" name="ShippingZip" value="<?php echo $SZip?>">
 	<br>
-	Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>"> 
+	Phone: <input type="text" name="Phone" value="<?php echo $Phone ?>">
 	<br>
-	Password: <input type="password" name="Password" value="<?php echo $Password ?>"> 
+	Password: <input type="password" name="Password" value="<?php echo $Password ?>">
 	<br>
 	<input type="submit" value="Edit" name="submit" >
 	</form>
@@ -95,7 +95,7 @@
         alert("Name must be filled out");
         return false;
     }
-    
+
     // validate Billing address
     var y = document.forms["myForm"]["BillingAddress"].value;
     if (y==null || y=="") {
@@ -108,7 +108,7 @@
         alert("Shipping address must be filled out");
         return false;
     }
-    
+
     // validate phone
     var z = document.forms["myForm"]["Phone"].value;
     if (z==null || z=="") {
@@ -121,8 +121,8 @@
          alert("Not a valid Phone Number");
          return false;
     }
-     
-    
+
+
      // validate password
     var s = document.forms["myForm"]["Password"].value;
     if (s==null || s=="") {
@@ -133,8 +133,8 @@
         alert("weak password ! ");
         return false;
     }
-   
-    
+
+
     return true;
 }
  </script>

@@ -3,19 +3,18 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "e-commerce";
+$password = "fahmy1234";
+$dbname = "E-Commerce";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 $currentUser = $_SEESION["current user"];
-$sql = "SELECT * FROM product WHERE Category = 'Mobile'";
-$record =
+$sql = "SELECT * FROM product WHERE Category = 'Electroic Device'";
 $result = $conn->query($sql);
 //if($_SEESION["current user"] == /*somwthing*/  ){
 if ($result->num_rows > 0) {
-    // output data of each row
+   // output data of each row
 ?>	<ul><div id="products">
 <?php
     while($row = $result->fetch_assoc()) {
@@ -26,31 +25,34 @@ if ($result->num_rows > 0) {
 			?>
           <h3><?php echo " id: " . $row["id"].
 		   "<br />   name: " . $row["name"].
-		   "<br /> category: " . $row["category"]."<br />   subcategory: " . 
+		   "<br /> category: " . $row["category"]."<br />   subcategory: " .
 		   $row["subcategory"]
-		   ?> 
+		   ?>
            <form method="post" action="purshace.php">
             <select name="quant" >
             <?php
-			 $x =$row["quantity"];
-			
+			 $x =$row["p_quantity"];
+
  				while($x){
 					?>
                      <option><?php echo $x;$x--;?></option>
-                    
+
                     <?php
 				}?>
  				</select>
+
+        <input type="text" name="p_id" value="<?php echo $row['id'] ?>" style="display:none;" />
                 <input type="submit" name="submit" value="Purchase">
                 </form> </h3>
               </div>
           <?php
-   
+
     }?>
     </div></ul> <?php
 } else {
-    echo "Not founs Items matches";
+    echo "Not found Items matches";
 }
 //}
 $conn->close();
 ?>
+

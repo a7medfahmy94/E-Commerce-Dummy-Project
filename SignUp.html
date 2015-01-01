@@ -18,14 +18,14 @@
         alert("Name must be filled out");
         return false;
     }
-    
+
     // validate Billing address,don't be null or empty
     var billindAddress = document.forms["LogInForm"]["BillingAddress"].value;
     if (billindAddress==null || billindAddress=="") {
         alert("Billing address must be filled out");
         return false;
     }
-    
+
     //validate shippingAddress ,don't be null or empty
     var shippingAddress = document.forms["LogInForm"]["ShippingAddress"].value;
     if (shippingAddress==null || shippingAddress=="") {
@@ -59,7 +59,7 @@
      }
      // validate password,don't be null or empty
     var pass = document.forms["LogInForm"]["Password"].value;
-    
+
     if (pass==null || pass=="") {
         alert("Password must be filled out");
         return false;
@@ -84,9 +84,9 @@
 </head>
 <center>
 <body style="background-color:LightGray ">
-    
-    
-  
+
+
+
      <h2>New User Signup!</h2>
 
         <form name="LogInForm" action = "Sign_Up.php" onsubmit="return validateForm()" method="post">
@@ -113,9 +113,9 @@
             <br>
             <button type="submit"  name ="submit" class="center">Signup</button>
         </form>
-    
-    
-</center>    
+
+
+</center>
 </form>
 </body>
 

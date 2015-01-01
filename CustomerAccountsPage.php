@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost:3306";
-    $dbusername = "hala";
-    $dbpassword = "hala";
-    $dbname = "e-commerce";
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "fahmy1234";
+    $dbname = "E-Commerce";
 $con=mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 // Check connection
 if (mysqli_connect_errno())
@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT * FROM customer");
+$result = mysqli_query($con,"SELECT * FROM Customer");
 
 echo "<table border='1'>
 <tr>

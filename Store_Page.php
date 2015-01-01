@@ -1,8 +1,8 @@
 <?php
 session_start();
 $servername = "localhost";
-$username = "LeilaSaeed";
-$password = "leila";
+$username = "root";
+$password = "fahmy1234";
 $dbname = "E-Commerce";
 
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -16,7 +16,7 @@ if( $conn->connect_error ){
 
 $sql = "SELECT * FROM product";
 
-#check if get this coloum 
+#check if get this coloum
 $result = $conn->query($sql);
 
 if( $result->num_rows <= 0 ){
@@ -67,42 +67,18 @@ if( $result->num_rows <= 0 ){
 </body>
 </html>
 
-<?php
 
-if (isset ($_POST["addProduct"])){
-	header("location : product.php");
-}
-else if (isset ($_POST["changeProduct"])){
-  
-  #check if set name
-	if (empty($_POST["nameOfProduct"])){
-		echo "Enter name of product";
-	}
-	else {
-		header("location : update_product.php");
-    $_SESSION['nameOfProduct'] = $nameOfProduct;
-	}
-
-}
-?>
 
 <html>
 	<header>
 		<title> Store Page </title>
-		<b> Store Page </b> 
+		<b> Store Page </b>
+    <link rel="stylesheet" href="css/bootstrap.css">
  	</header>
 
  	<body>
- 		<form action = "Store_Page.php" method = "post">
- 			<br>
- 			<input type = "submit" name = "addProduct" value = "addProduct" > 
- 			<br>
- 			OR 
- 			<br>
- 			<input name = "nameOfProduct" type = "text">
- 			<input type = "submit" name = "changeProduct" value = "changeProduct" > 
- 		</form>
-
+    <a class="btn" href="new_product.php">Add Product</a><br><br>
+    <a class="btn" href="update_product.php">Update Product</a>
  	</body>
 
 </html>

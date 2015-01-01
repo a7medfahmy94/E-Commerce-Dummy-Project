@@ -10,7 +10,7 @@ Project Specification
 You will develop an e-commerce website that allows the customers to browse and purchase different products. The products may be books, laptops, cameras, mobiles, any electronic devices etc.
 The website should provide two different views according to the type of the user as the user may be admin “store owner” or customer.
 The customers will be able to register in your website, browse products, purchase any product, and track their orders.
-The admin will be able to update customer’s information, manage the store quantity of any product, and add products to shipping.
+The admin will be able to UPDATE Customer’s information, manage the store quantity of any product, and add products to shipping.
 
 ==================================
 A) Customer Pages
@@ -39,7 +39,7 @@ Sign up form will allow customers to write name, billing address, “optional”
 The customer will use the email address for the login instead of the username.
 You should handle the error of the incomplete information.
 You should handle the invalid format of the different inputs.
-After successful sign up ‘complete & valid information’, customer’s information should be inserted into the database. 
+After successful sign up ‘complete & valid information’, customer’s information should be inserted into the database.
 
 
 4. Customer’s Information Page
@@ -52,11 +52,11 @@ To avoid the problem of incomplete information, the page will view the customer 
 5. Shopping Cart Page
 
 This page will include the products that the customer has chosen to purchase.
-As mentioned before, when a customer selects a product for purchase, 
+As mentioned before, when a customer selects a product for purchase,
 {product id, quantity, customer id, and the time when adding the product} will be passed here. The provided information will be inserted into the database in the Order Processing table.
-Order Processing table includes two flags, 
-processed flag: set to zero when adding new item 
-shipped flag: set to zero when adding new item 
+Order Processing table includes two flags,
+processed flag: set to zero when adding new item
+shipped flag: set to zero when adding new item
 The flags values will be changed later in the checkout page.
 At this point the customer will be able to drop products, increase/decrease quantities and continue shopping.
 After an item is added to the cart it will remain for a period of time. After this time, if the processed flag of an item is zero, it will be deleted from the table.
@@ -70,7 +70,7 @@ If the customer needs to make any change, it should be done on the shopping cart
 After verifying the information, the customer should able to click purchase to any of the chosen products.
 After clicking purchase button, the processed flag of this product should be updated to one and redirect the customer to successful transaction page “Just thank the customer for purchasing from your website and provide the transaction ID”.
 You should handle the error of incomplete information.
- 
+
 7. Order Tracking Page
 
 The customer will be able to follow shipments.
@@ -88,8 +88,8 @@ B) Admin Pages
 The admin ‘store owner’ can modify inventory, and ship products.
 This page will include links to those pages that can be accessed by the admin.
 The admin should login before any access.
-You should validate the login and handle the error of an invalid username or password. 
- 
+You should validate the login and handle the error of an invalid username or password.
+
 2. Store Page
 
 This page will provide all the products in the database.
