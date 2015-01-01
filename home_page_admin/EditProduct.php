@@ -14,28 +14,24 @@ if(! $conn ){
   header("location : homePageAdmin.php");
 }
 
-#check if click on Insert or delete
-if( isset($_POST["Insert"]) ){
-	#go to Insert product
-	header('location : new_product.php');
-}
-else if( isset($_POST["Delete"]) ){
+if( isset($_POST["Delete"]) ){
 
-	#check if set name of product 
-	if (!empty($_POST["nameOfproduct"])){
-		$nameOfproduct = $_POST["nameOfproduct"];
+	#check if set ID of product 
+	if (!empty($_POST["IDOfproduct"])){
+		$IDOfproduct = $_POST["IDOfproduct"];
 
 		#delete 2l row
-		$sql = "DELETE FROM product where  name = $nameOfproduct" ;
+		$sql = "DELETE FROM product where  id = '$IDOfproduct'" ;
 
 		#check if already delete 
-		if ($conn->query($sql) === TRUE) {
+		if ($conn->query($sql) == TRUE) {
   		echo "Success deleting";
 		}
 		else {
   		echo "Error deleting ";
   		header("location : homePageAdmin.php");
 		}
+	}
 }
 
 
@@ -48,18 +44,13 @@ else if( isset($_POST["Delete"]) ){
  	</header>
 
  	<body>
-
- 		<form action = "EditProduct.php" method = "post">
- 		  Enter name of product<br>
- 			<input type = "text" name = "nameOfproduct">
- 			<input type = "submit" name = "Insert" value = "Insert" >  
- 		</form>
+ 		<a href="new_product.php" target="_blank">Inset</a>
  		<br>
  			OR
  		<br>
  		<form action = "EditProduct.php" method = "post">
- 			Enter name of product<br>
- 			<input type = "text" name = "nameOfproduct">
+ 			Enter ID of product<br>
+ 			<input type = "text" name = "IDOfproduct">
  			<input type = "submit" name = "Delete" value = "Delete" >  
  		</form>
 

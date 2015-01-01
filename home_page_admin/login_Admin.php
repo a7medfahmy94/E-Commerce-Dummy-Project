@@ -75,7 +75,7 @@ if( isset($_POST["Log in"]) ){
  			<input name = "username" type = "text">
  			<br>
  			password <br>
- 			<input name = "pass" type = "text">
+ 			<input name = "pass" type = "password">
  			<br>
  			<br>
  			<input type = "submit" name = "Log in" value = "Log in" >  

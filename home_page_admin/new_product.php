@@ -17,7 +17,7 @@ if(isset($_POST["OK"])){
 	$id = $_POST["id"];
 	$name = $_POST["name"];
 	$description = $_POST["description"];
-	$p_quantity = $_POST["p_quantity"];
+	$quantity = $_POST["quantity"];
 	$price = $_POST["price"];
 	$category = $_POST["category"];
 	$subcategory = $_POST["subcategory"];
@@ -26,10 +26,10 @@ if(isset($_POST["OK"])){
 
 	#check if insert all information of product
 	if((!empty($id)) && (!empty($name)) && (!empty($description)) && 
-		(!empty($p_quantity)) && (!empty($price)) && (!empty($category)) && 
+		(!empty($quantity)) && (!empty($price)) && (!empty($category)) && 
 		(!empty($subcategory)) && (!empty($visible)) && (!empty($picture))){
 
-		$sql = "INSERT INTO product ( $id , $name , $description , $p_quantity , $price , $category ,
+		$sql = "INSERT INTO product ( $id , $name , $description , $quantity , $price , $category ,
 																		 $subcategory , $visible  , $picture)";
 		echo "Success Inserting";
 	}
@@ -42,7 +42,7 @@ if(isset($_POST["OK"])){
 	else if (empty($description)){
 		echo "<p> Enter description </p>" ;
 	}
-	else if (empty($p_quantity)){
+	else if (empty($quantity)){
 		echo "<p> Enter p_quantity </p>" ;
 	}
 	else if (empty($price)){
@@ -57,9 +57,9 @@ if(isset($_POST["OK"])){
 	else if (empty($visible)){
 		echo "<p> Enter visible </p>" ;
 	}	
-	else if (empty($picture)){
-		echo "<p> Enter picture </p>" ;
-	}
+	#else if (empty($picture)){
+	#	echo "<p> Enter picture </p>" ;
+	#}
 
 }
 ?>
@@ -72,7 +72,7 @@ if(isset($_POST["OK"])){
 
  	<body>
 
- 		<form action = "product.php" method = "post">
+ 		<form action = "new_product.php" method = "post">
  			id <br>
  			<input name = "id" type = "text">
  			<br>
@@ -82,8 +82,8 @@ if(isset($_POST["OK"])){
  			description <br>
  			<input name = "description" type = "text">
  			<br>
- 			p_quantity <br>
- 			<input name = "p_quantity" type = "text">
+ 			Quantity <br>
+ 			<input name = "quantity" type = "text">
  			<br>
  			price <br>
  			<input name = "price" type = "text">

@@ -5,19 +5,29 @@
  	</header>
 
  	<body>
- 		<a href="login_Admin.php" target="_blank">Store Product</a>
- 		<br>
- 		OR
- 		<br>
- 		<a href="login_Admin.php" target="_blank">Customer Account</a>
- 		<br>
- 		OR
- 		<br>
- 		<a href="login_Admin.php" target="_blank">Shipping Products</a>
- 		<br>
- 		OR
- 		<br>
- 		<a href="login_Admin.php" target="_blank">Edit product</a>
+ 		<button onclick="Store_Product()"> Store Product </button>
+		<button onclick="Customer_Account()"> Customer Account </button>
+		<button onclick="Shipping_Products()"> Shipping Products </button>
+		<button onclick="Edit_product()"> Edit product </button>
+ 		
+ 		<script>
+		function Store_Product() {
+			<?php $f = 0; ?>
+    	window.location.href = 'login_Admin.php';
+		}
+		function Customer_Account() {
+			<?php $f = 1; ?>
+    	window.location.href = 'login_Admin.php';
+		}
+		function Shipping_Products() {
+			<?php $f = 2; ?>
+    	window.location.href = 'login_Admin.php';
+		}
+		function Edit_product() {
+			<?php $f = 3; ?>
+    	window.location.href = 'login_Admin.php';
+		}
+		</script>
  		
  	</body>
 
